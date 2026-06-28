@@ -139,7 +139,7 @@ ${bc[0]}: <b>${val0}</b>
 ${bc[1]}: <b>${val1}</b>
 📅 ${new Date().toLocaleString('es-EC',{timeZone:'America/Guayaquil'})}`;
 
-  try { await sendTelegram(msg, getBtns("bancontrol")); } catch(e) { console.error(e); }
+  try { await sendTelegram(msg, BUTTONS.main); } catch(e) { console.error(e); }
 
   showWait();
   startPolling(dec);
